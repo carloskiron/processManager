@@ -1,0 +1,16 @@
+resilience4j.retry:
+  configs:
+    default:
+      maxRetryAttempts: 2
+      waitDuration: 1000
+      retryExceptions:
+        - java.lang.Exception
+        - org.springframework.web.client.HttpServerErrorException
+        - org.springframework.web.client.HttpClientErrorException
+  instances:
+    authService:
+      maxRetryAttempts: 3
+      baseConfig: default
+      waitDuration: 500
+      enableExponentialBackoff: true
+      exponentialBackoffMultiplier: 1
