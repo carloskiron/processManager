@@ -2,9 +2,14 @@ package com.processManager;
 
 import com.processManager.common.IRequestHelper;
 import com.processManager.common.RequestHelper;
+import com.processManager.core.IProcessManagerTasks;
+import com.processManager.core.ProcessManagerTasks;
+import com.processManager.core.tasks.ADataLoadTask;
+import com.processManager.core.tasks.DataLoadTask;
 import org.apache.velocity.app.VelocityEngine;
 import org.springframework.boot.web.client.RestTemplateBuilder;
 import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.EnableAspectJAutoProxy;
 import org.springframework.data.mongodb.MongoDbFactory;
@@ -16,6 +21,7 @@ import java.util.Properties;
 
 @Configuration
 @EnableMongoRepositories("com.processManager")
+@ComponentScan("com.processManager")
 @EnableAspectJAutoProxy
 public class ProcessManagerServiceConfig {
 
@@ -31,6 +37,16 @@ public class ProcessManagerServiceConfig {
         ve.init(getVelocityProperties());
 
         return ve;
+    }
+
+    @Bean
+    public ADataLoadTask getDataLoadTask() {
+        return new DataLoadTask();
+    }
+
+    @Bean
+    public IProcessManagerTasks getProcessManagerTasks() {
+        return new ProcessManagerTasks();
     }
 
     @Bean

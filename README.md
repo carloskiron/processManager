@@ -158,6 +158,9 @@ Database connection and other settings can be set up in the following .propertie
 * resources/application-prod.properties  (Production)
 * resources/application-unitTest.properties (Test cases). 
 
+It's highly recommended to use ENV variables to set up sensitive information like
+connection strings and API keys.  
+
 **Security**
 
 Authentication was implemented using Amazon Cognito. It should be configured using the settings below: 
@@ -170,9 +173,11 @@ Authentication was implemented using Amazon Cognito. It should be configured usi
 
 src/test/java/com/processManager/test
 
+No unit tests have been completed yet. You will see a list of possible tests to fully confirm the readiness of the data-loader example provided here.
+
 **Deployment**
 
-The service can be deployed on any container-based service with Docker support. A **Docker file** and **build spec file** are included as part of this distribution to easily deploy it on AWS ECS through CodeDeploy or CodePipeline
+The service can be deployed on any container-based service with Docker support. A **Docker file** and **build spec file** are included as part of this distribution to easily deploy it on AWS ECS through CodeDeploy or Code Pipeline
 
 * AWS ECS https://aws.amazon.com/ecs/
 

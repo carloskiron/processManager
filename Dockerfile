@@ -1,4 +1,4 @@
-FROM stellaremploydocker/stellaremployrepository:stataBaseImage
+FROM openjdk:8
 
 # Add Maintainer Info
 LABEL maintainer="cmonvel@gmail.com"
